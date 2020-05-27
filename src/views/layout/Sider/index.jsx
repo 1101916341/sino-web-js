@@ -6,7 +6,8 @@ import Menu from "./Menu";
 const { Sider } = Layout;
 
 const LayoutSider = (props) => {
-    const { sidebarCollapsed, sidebarLogo } = props;
+    // const { sidebarCollapsed, sidebarLogo } = props;
+    const { sidebarCollapsed } = props;
     return (
         <Sider
             collapsible
