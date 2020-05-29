@@ -6,7 +6,6 @@ import Menu from "./Menu";
 const { Sider } = Layout;
 
 const LayoutSider = (props) => {
-    // const { sidebarCollapsed, sidebarLogo } = props;
     const { sidebarCollapsed } = props;
     return (
         <Sider
@@ -20,5 +19,9 @@ const LayoutSider = (props) => {
         </Sider>
     );
 }
-
-export default connect()(LayoutSider);
+const mapStateToProps = (state) => {
+    return {
+        ...state.app
+    }
+}
+export default connect(mapStateToProps)(LayoutSider);

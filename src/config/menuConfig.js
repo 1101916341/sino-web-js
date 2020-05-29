@@ -1,6 +1,6 @@
 const menuList = [{
-    pathname: "/dashboard",
     title: "首页",
+    pathname: "/dashboard",
     roles: [],
     icon: "HomeOutlined",
     children: [{
