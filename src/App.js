@@ -8,9 +8,9 @@ import Routes from './routes'
 const App = () => {
   return (
     <ConfigProvider locale={zhCN}>
-    <Provider store={store}>
-      <Routes />
-    </Provider>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </ConfigProvider>
   )
 }

@@ -1,59 +1,59 @@
 const menuList = [{
     title: "首页",
-    pathname: "/dashboard",
+    path: "/dashboard",
     roles: [],
     icon: "HomeOutlined",
     children: [{
-        pathname: "/dashboard/123",
+        path: "/dashboard/123",
         title: "首页",
         roles: [],
         icon: "HomeOutlined"
     }]
 },
 {
-    pathname: "/analysis",
+    path: "/analysis",
     title: "经营分析",
     roles: [],
     icon: "AreaChartOutlined",
     children: []
 },
 {
-    pathname: "/culture",
+    path: "/culture",
     title: "企业文化",
     roles: [],
     icon: "BookOutlined",
     children: []
 },
 {
-    pathname: "/business",
+    path: "/business",
     title: "业务管理",
     roles: [],
     icon: "GoldOutlined",
     children: []
 },
 {
-    pathname: "/process",
+    path: "/process",
     title: "流程管理",
     roles: [],
     icon: "ClusterOutlined",
     children: []
 },
 {
-    pathname: "/credit",
+    path: "/credit",
     title: "信用管理",
     roles: [],
     icon: "IdcardOutlined",
     children: []
 },
 {
-    pathname: "/configuration",
+    path: "/configuration",
     title: "配置管理",
     roles: [],
     icon: "SettingOutlined",
     children: []
 },
 {
-    pathname: "/system",
+    path: "/system",
     title: "系统管理",
     roles: [],
     icon: "SettingOutlined",
