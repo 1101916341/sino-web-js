@@ -5,7 +5,8 @@ import Layout from "@/views/layout";
 import Login from "@/views/login";
 class Routes extends Component {
     render () {
-        const { token, role, getUserInfo } = this.props;
+        // const { token, role, getUserInfo } = this.props;
+        const { token, role } = this.props;
         return (
             <Router>
                 <Switch>

@@ -1,5 +1,11 @@
 import { toggleSiderBar } from './app'
+import { addTag, emptyTagList, deleteTag, closeOtherTags } from './tagsView'
+
 
 export {
-    toggleSiderBar
+    toggleSiderBar,
+    addTag,
+    emptyTagList,
+    deleteTag,
+    closeOtherTags
 }
