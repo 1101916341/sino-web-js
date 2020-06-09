@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { getUserInfo } from "@/store/actions";
 import { connect } from "react-redux";
 import Layout from "@/views/layout";
 import Login from "@/views/login";
 class Routes extends Component {
     render () {
-        // const { token, role, getUserInfo } = this.props;
-        const { token, role } = this.props;
+        const { token, roles, getUserInfo } = this.props;
+        console.log(this.props)
         return (
             <Router>
                 <Switch>
@@ -14,13 +15,13 @@ class Routes extends Component {
                     <Route
                         path="/"
                         render={() => {
-                            if (token) {
+                            if (!token) {
                                 return <Redirect to="/login" />;
                             } else {
-                                if (role) {
+                                if (roles) {
                                     return <Layout />
                                 } else {
-                                    return <Layout />
+                                    getUserInfo().then(() => <Layout />);
                                 }
                             }
                         }}
@@ -30,4 +31,4 @@ class Routes extends Component {
         )
     }
 }
-export default connect()(Routes)
+export default connect((state) => state.user, { getUserInfo })(Routes);

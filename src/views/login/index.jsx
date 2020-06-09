@@ -1,74 +1,44 @@
-import React, { Component } from 'react';
-import { Form, Input, Button, Card, Menu, Dropdown, Modal } from 'antd';
+import React from 'react';
+import { Form, Input, Button, Card, message } from 'antd';
+import { Redirect } from "react-router-dom";
 import {
     UserOutlined,
     LockOutlined,
     UsergroupAddOutlined,
     HomeOutlined,
     MobileOutlined,
-    YoutubeOutlined,
-    CommentOutlined,
-    RobotOutlined,
-    PhoneOutlined,
-    FileSearchOutlined
+    YoutubeOutlined
 } from '@ant-design/icons';
-import logo from '../../assets/images/logo.png'
-import anniversary from '../../assets/images/loginImage/anniversary.png'
-import official from '../../assets/images/loginImage/official.png'
+import DocumentTitle from "react-document-title";
+import logo from '@/assets/images/logo.png'
+import anniversary from '@/assets/images/loginImage/anniversary.png'
+import official from '@/assets/images/loginImage/official.png'
+import LoginMenu from './LoginMenu'
+import LoginModal from './LoginModal'
+import { login } from "@/store/actions";
 import './login.less'
-const { confirm } = Modal;
-class Login extends Component {
-    render() {
-        const onFinish = values => {
-            console.log('Success:', values);
-        };
+import { connect } from 'react-redux';
 
-        const onFinishFailed = errorInfo => {
-            console.log('Failed:', errorInfo);
-        };
-        function showConfirm() {
-            confirm({
-                className: 'login-modal',
-                centered: true,
-                title: '提示',
-                content: '重置密码需发送邮件给运管项目经理陈景硕（chenjingshuo@sinodata.net.cn），并抄送给您的直属上级领导。',
-                okText: '确定',
-                cancelText: ' ',
-                onOk() { }
-            })
-        }
-        const menu = (
-            <Menu className="footer-menu">
-                <Menu.Item>
-                    <div>
-                        <RobotOutlined />
-                        <div>
-                            <span>使用对接人</span>
-                            <span>陈景硕</span>
-                        </div>
-                    </div>
-                </Menu.Item>
-                <Menu.Item>
-                    <div>
-                        <PhoneOutlined />
-                        <div>
-                            <span>咨询电话</span>
-                            <span>15699993889</span>
-                        </div>
-                    </div>
-                </Menu.Item>
-                <Menu.Item>
-                    <div>
-                        <FileSearchOutlined />
-                        <div>
-                            <span>建议反馈</span>
-                            <span>运营系统是不完善的，我们渴望合理、清晰的建议</span>
-                        </div>
-                    </div>
-                </Menu.Item>
-            </Menu>
-        );
-        return (
+const Login = (props) => {
+    const { token, login } = props;
+    const handleLogin = (userAccount, password) => {
+        login(userAccount, password)
+            .then(data => {
+                message.success(data.bizResultMessage);
+                // handleUserInfo();
+            }).catch((error) => {
+                message.error(error);
+            });
+    }
+    const onFinish = values => {
+        const { userAccount, password } = values;
+        handleLogin(userAccount, password);
+    };
+    if (token) {
+        return <Redirect to="/dashboard" />;
+    }
+    return (
+        <DocumentTitle title={"用户登录"}>
             <div className="login">
                 <div>
                     <div className="login-header">
@@ -99,10 +69,9 @@ class Login extends Component {
                                 className="login-form"
                                 initialValues={{ remember: true }}
                                 onFinish={onFinish}
-                                onFinishFailed={onFinishFailed}
                             >
                                 <Form.Item
-                                    name="username"
+                                    name="userAccount"
                                     rules={[{ required: true, message: '用户名不能为空!' }]}
                                 >
                                     <Input size="large" prefix={<UserOutlined className="site-form-item-icon" />} placeholder="请输入您的用户名" />
@@ -122,7 +91,7 @@ class Login extends Component {
                                     <Button type="primary" size="large" block htmlType="submit" className="login-form-button">立即登录</Button>
                                 </Form.Item>
                                 <h3 className="text-right-password" >
-                                    <span onClick={showConfirm}>忘记密码</span>
+                                    <span onClick={LoginModal}>忘记密码</span>
                                 </h3>
                             </Form>
                             <div className="login-footer-text">
@@ -132,12 +101,11 @@ class Login extends Component {
                     </Card>
                 </div>
                 <footer className="footer">
-                    <Dropdown overlay={menu} trigger={['click']}>
-                        <div className="footer-button"><CommentOutlined />咨询建议</div>
-                    </Dropdown>
+                    <LoginMenu />
                 </footer>
             </div>
-        );
-    }
+        </DocumentTitle>
+    );
 }
-export default Login;
+
+export default connect(state => state.user, { login })(Login);
