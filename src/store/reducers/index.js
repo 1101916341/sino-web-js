@@ -1,3 +1,5 @@
 import { combineReducers } from 'redux'
 import app from './app'
-export default combineReducers({ app })
+import tagsView from './tagsView'
+import user from "./user";
+export default combineReducers({ app, tagsView, user })
