@@ -6,6 +6,7 @@ export const getUserInfo = () => (dispatch) => {
             .then((response) => {
                 const { data } = response;
                 if (data.resultCode === "200") {
+                    // 获取用户信息
                     const userInfo = data.data;
                     dispatch(setUserInfo(userInfo));
                     resolve(data);

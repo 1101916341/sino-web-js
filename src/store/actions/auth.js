@@ -7,6 +7,7 @@ export const login = (userAccount, password) => (dispatch) => {
             .then((response) => {
                 const { data } = response;
                 if (data.resultCode === "200") {
+                    // 用户名验证通过之后，需要添加一个是否登录的标识
                     dispatch(setUserToken(userAccount));
                     setToken(userAccount);
                     resolve(data);
@@ -18,12 +19,28 @@ export const login = (userAccount, password) => (dispatch) => {
     })
 }
 
-export const logout = (token) => (dispatch) => {
+export const logout = () => (dispatch) => {
     return new Promise((resolve, reject) => {
-        reqLogoutApi(token)
+        reqLogoutApi()
+            .then(() => {
+                dispatch(resetUser());
+                removeToken();
+                window.location.href = '/'
+                resolve();
+            }).catch((error) => {
+                reject(error)
+            });
+    });
+}
+
+/**
+ * export const logout = () => (dispatch) => {
+    return new Promise((resolve, reject) => {
+        reqLogoutApi()
             .then((response) => {
                 const { data } = response;
                 if (data.resultCode === 200) {
+                    window.location.href='/login'
                     dispatch(resetUser());
                     removeToken();
                     resolve(data);
@@ -36,3 +53,5 @@ export const logout = (token) => (dispatch) => {
             });
     });
 }
+ *
+ */

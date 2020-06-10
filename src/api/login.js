@@ -10,10 +10,9 @@ export function reqLoginApi (data) {
         params: data
     })
 }
-export function reqLogoutApi (data) {
+export function reqLogoutApi () {
     return request({
         url: api.logout,
         method: 'get',
-        data
     })
 }

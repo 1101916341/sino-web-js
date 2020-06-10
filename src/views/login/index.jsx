@@ -65,6 +65,7 @@ const Login = (props) => {
                                 <span>Sinodata Operation Management System</span>
                             </div>
                             <Form
+                                autoComplete="off"
                                 name="normal_login"
                                 className="login-form"
                                 initialValues={{ remember: true }}

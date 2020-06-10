@@ -3,6 +3,7 @@ import store from '@/store'
 import { message } from "antd";
 import { getToken } from "@/utils/auth";
 import { removeToken } from './auth'
+
 //创建一个axios示例
 const service = axios.create({
     headers: {

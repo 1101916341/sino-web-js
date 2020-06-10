@@ -11,7 +11,7 @@ const { Content } = Layout;
 
 const getPageTitle = (menuList, pathname) => {
     let title = '中科金财' // 初始化标题
-    let item = getMenuItemInMenuListByProperty(menuList, "pathname", pathname);
+    let item = getMenuItemInMenuListByProperty(menuList, "path", pathname);
     if (item) {
         title = `${item.title} - 中科金财`;
     }
@@ -19,11 +19,11 @@ const getPageTitle = (menuList, pathname) => {
 }
 
 const LayoutContent = (props) => {
-    const { role, location } = props;
+    const { roles, location } = props;
     const { pathname } = location;
     const handleFilter = (route) => {
         // 过滤没有权限的页面
-        return role !== "admin" || !route.roles || route.roles.includes(role);
+        return roles !== "admin" || !route.roles || route.roles.includes(roles);
     };
     return (
         <DocumentTitle title={getPageTitle(menuList, pathname)}>
@@ -58,4 +58,4 @@ const LayoutContent = (props) => {
     );
 }
 
-export default connect(state => state)(withRouter(LayoutContent));
+export default connect(state => state.user)(withRouter(LayoutContent));

@@ -37,6 +37,7 @@ export default function user(state = initUserInfo, action) {
         case types.USER_SET_USER_INFO:
             return {
                 ...state,
+                userAccount: action.userAccount,
                 userName: action.userName,
                 roles: action.roles,
                 avatar: action.avatar,

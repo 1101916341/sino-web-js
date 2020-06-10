@@ -1,17 +1,32 @@
 import React from 'react';
-import { Layout, Menu, Dropdown, Avatar } from "antd";
+import { Layout, Menu, Dropdown, Avatar, Modal } from "antd";
 import { Link } from 'react-router-dom'
 import Hamburger from "@/components/Hamburger";
 import { connect } from "react-redux";
-import { UserOutlined, SettingOutlined, LogoutOutlined } from '@ant-design/icons';
+import { logout, getUserInfo } from "@/store/actions";
+import { UserOutlined, SettingOutlined, LogoutOutlined, ExclamationCircleOutlined  } from '@ant-design/icons';
 import './index.less'
+import profile from '@/assets/images/users/profile.png'
 const { Header } = Layout;
 
-const LayoutHeader = () => {
+const LayoutHeader = (props) => {
+    const { userName, userAccount, avatar, logout } = props
+    const handleLogout = () => {
+        Modal.confirm({
+            icon: <ExclamationCircleOutlined />,
+            title: "注销",
+            content: "确定要退出系统吗?",
+            okText: "确定",
+            cancelText: "取消",
+            onOk: () => {
+                logout();
+            },
+        });
+    };
     const onClick = ({ key }) => {
         switch (key) {
             case "logout":
-                console.log('退出')
+                handleLogout()
                 break;
             default:
                 break;
@@ -22,11 +37,15 @@ const LayoutHeader = () => {
         <Menu onClick={onClick}>
             <div className="user-info">
                 <div className="user-image">
-                    <Avatar shape="square" size={64} src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                    {avatar ?
+                        <Avatar shape="square" size={48} src={avatar} />
+                        :
+                        <Avatar shape="square" size={48} src={profile} />
+                    }
                 </div>
                 <div className="user-text">
-                    <span>立新</span>
-                    <span>lixin</span>
+                    <span>{userName}</span>
+                    <span>{userAccount}</span>
                 </div>
             </div>
             <Menu.Divider />
@@ -34,7 +53,7 @@ const LayoutHeader = () => {
                 <Link to="/dashboard"><UserOutlined /> 个人信息</Link>
             </Menu.Item>
             <Menu.Item key="project">
-                <Link to="/dashboard"><SettingOutlined /> 修改密码 </Link>
+                <Link to="/editPassowrd"><SettingOutlined /> 修改密码 </Link>
             </Menu.Item>
             <Menu.Item key="logout"><LogoutOutlined /> 退出</Menu.Item>
         </Menu>
@@ -49,7 +68,11 @@ const LayoutHeader = () => {
                     <div className="dropdown-wrap">
                         <Dropdown overlay={menu} placement="bottomRight" trigger={['click']}>
                             <div>
-                                <Avatar size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                                {avatar ?
+                                    <Avatar shape="square" size={48} src={avatar} />
+                                    :
+                                    <Avatar shape="square" size={48} src={profile} />
+                                }
                             </div>
                         </Dropdown>
                     </div>
@@ -59,4 +82,4 @@ const LayoutHeader = () => {
     );
 }
 
-export default connect()(LayoutHeader)
+export default connect(state => state.user, { logout, getUserInfo })(LayoutHeader)
