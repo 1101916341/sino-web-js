@@ -7,7 +7,7 @@ import { UserOutlined, SettingOutlined, LogoutOutlined, ExclamationCircleOutline
 import profile from '@/assets/images/users/profile.png'
 import { menuList } from '@/config/menuConfig'
 import { getMenuItemInMenuListByProperty } from '@/utils'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import './header.less'
 
 const { Header } = Layout
@@ -27,12 +27,14 @@ const LayoutHeader = (props) => {
     })
   }
   const onClick = ({ key }) => {
-    let menuItem = getMenuItemInMenuListByProperty(menuList, 'path', key)
+    const menuItem = getMenuItemInMenuListByProperty(menuList, 'path', key)
     switch (key) {
       case '/myUser':
+        props.history.push(key)
         addTag(menuItem)
         break
       case '/editPassowrd':
+        props.history.push(key)
         addTag(menuItem)
         break
       case 'logout':
@@ -59,10 +61,10 @@ const LayoutHeader = (props) => {
       </div>
       <Menu.Divider />
       <Menu.Item key='/myUser' title='个人信息' icon={<UserOutlined />}>
-        <Link to='/myUser'>个人信息</Link>
+        个人信息
       </Menu.Item>
       <Menu.Item key='/editPassowrd' title='修改密码' icon={<SettingOutlined />}>
-        <Link to='/editPassowrd'>修改密码</Link>
+        修改密码
       </Menu.Item>
       <Menu.Item key='logout' title='退出' icon={<LogoutOutlined />}>
         退出
