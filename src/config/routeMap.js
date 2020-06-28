@@ -4,10 +4,13 @@ const Dashboard = Loadable({ loader: () => import('@/views/dashboard'), loading:
 const EditPassowrd = Loadable({ loader: () => import('@/views/editPassword'), loading: Loading })
 const MyUser = Loadable({ loader: () => import('@/views/myUser'), loading: Loading })
 const Error404 = Loadable({ loader: () => import('@/views/error/404'), loading: Loading });
+const Bizcustinfo = Loadable({ loader: () => import('@/views/bizcustinfo'), loading: Loading });
+
 
 export default [
     { path: '/dashboard', component: Dashboard, roles: ['admin', 'editor', 'guest'] },
     { path: '/editPassowrd', component: EditPassowrd, roles: ['admin', 'editor', 'guest'] },
     { path: '/myUser', component: MyUser, roles: ['admin', 'editor', 'guest'] },
+    { path: '/bizcustinfo', component: Bizcustinfo, roles: ['admin', 'editor', 'guest'] },
     { path: "/error/404", component: Error404 },
 ]

@@ -6,10 +6,28 @@ const menuList = [
     icon: 'HomeOutlined',
     children: [
       {
-        path: '/dashboard/123',
-        title: '首页',
+        path: '/bizsupplierinfo',
+        title: '供应商库',
         roles: [],
-        icon: 'HomeOutlined'
+        icon: 'GroupOutlined'
+      },
+      {
+        path: '/flowform',
+        title: '暂存提交',
+        roles: [],
+        icon: 'SaveOutlined'
+      },
+      {
+        path: '/projpcontractreview/listReviewAndPurchse',
+        title: '案例库',
+        roles: [],
+        icon: 'UngroupOutlined'
+      },
+      {
+        path: '/bizcustinfo',
+        title: '客户库',
+        roles: [],
+        icon: 'UserSwitchOutlined'
       }
     ]
   },
