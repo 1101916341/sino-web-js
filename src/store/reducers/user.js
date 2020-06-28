@@ -9,7 +9,8 @@ const initUserInfo = {
   telephone: '', // 电话
   userName: '', // 用户名
   userToken: '', // 用户Token
-  weight: '',
+  weight: '', // 用户销售等级加权
+  orgName: '', // 机构
   bankCard: '',
   orgId: '',
   orgList: '', // 部门.
@@ -45,6 +46,7 @@ export default function user(state = initUserInfo, action) {
         telephone: action.telephone,
         userToken: action.userToken,
         weight: action.weight,
+        orgName: action.orgName,
         bankCard: action.bankCard,
         orgId: action.orgId,
         orgList: action.orgList,

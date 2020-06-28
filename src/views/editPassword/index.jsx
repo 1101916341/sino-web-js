@@ -1,18 +1,41 @@
 import React, { Component } from 'react'
 import { Form, Input, Button, Card } from 'antd'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { layout, tailLayout } from '@/utils/formStyle'
 import * as REGEXP from '@/utils/regexp'
+import { deleteTag } from '@/store/actions'
 import { checkOldPwd } from '@/store/actions'
 import './editPassword.less'
 class EditPassword extends Component {
   render() {
     const { passwordReg } = REGEXP.REGEXP
-    const { userName, id, checkOldPwd } = this.props
+    const { userName, id, checkOldPwd } = this.props.user
     // 修改密码方法
     const onFinish = (values) => {
       checkOldPwd(values)
+    }
+    // 关闭
+    const handleClose = () => {
+      const { taglist } = this.props.tagsView
+      const { history, deleteTag } = this.props
+      const tag = taglist.filter((item) => item.path === '/editPassowrd')
+      const path = tag[0].path
+      const currentPath = history.location.pathname
+      const length = taglist.length
+      // 如果关闭的是当前页，跳转到最后一个tag
+      if (path === currentPath) {
+        history.push(taglist[length - 1].path)
+      }
+      // 如果关闭的是最后的tag ,且当前显示的也是最后的tag对应的页面，才做路由跳转
+      if (path === taglist[length - 1].path && currentPath === taglist[length - 1].path) {
+        // 因为cutTaglist在最后执行，所以跳转到上一个tags的对应的路由，应该-2
+        if (length - 2 > 0) {
+          history.push(taglist[length - 2].path)
+        } else if (length === 2) {
+          history.push(taglist[0].path)
+        }
+      }
+      deleteTag(tag[0])
     }
     return (
       <Card className='card' title='密码修改'>
@@ -56,9 +79,7 @@ class EditPassword extends Component {
             <Button type='primary' htmlType='submit'>
               确定
             </Button>
-            <Button type='default'>
-              <Link to='/dashboard'>取消</Link>
-            </Button>
+            <Button type='default' onClick={handleClose}>取消</Button>
           </Form.Item>
         </Form>
       </Card>
@@ -66,4 +87,4 @@ class EditPassword extends Component {
   }
 }
 
-export default connect((state) => state.user, { checkOldPwd })(EditPassword)
+export default connect((state) => state, { checkOldPwd, deleteTag })(EditPassword)
