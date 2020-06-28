@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { layout, tailLayout } from '@/utils/formStyle'
 import * as REGEXP from '@/utils/regexp'
 import { checkOldPwd } from '@/store/actions'
-import './index.less'
+import './editPassword.less'
 class EditPassword extends Component {
   render() {
     const { passwordReg } = REGEXP.REGEXP
