@@ -48,10 +48,10 @@ const Login = (props) => {
                             className="log-style"
                         />
                         <div className="sino-ul">
-                            <a href="http://www.sinodata.net.cn/"><HomeOutlined /> 公司官网</a>
-                            <a href="http://ehr.sinodata.net.cn"><UsergroupAddOutlined /> ERH员工系统</a>
-                            <a href="http://e-learning.sinodata.net.cn"><YoutubeOutlined /> E-learning员工学习系统</a>
-                            <a href="http://172.169.100.126:8082/app/file/download/template?fileNamePath=spak"><MobileOutlined /> 安卓手机下载</a>
+                            <a rel='noopener noreferrer' target='_blank' href="http://www.sinodata.net.cn/"><HomeOutlined /> 公司官网</a>
+                            <a rel='noopener noreferrer' target='_blank' href="http://ehr.sinodata.net.cn"><UsergroupAddOutlined /> ERH员工系统</a>
+                            <a rel='noopener noreferrer' target='_blank' href="http://e-learning.sinodata.net.cn"><YoutubeOutlined /> E-learning员工学习系统</a>
+                            <a rel='noopener noreferrer' target='_blank' href="http://172.169.100.126:8082/app/file/download/template?fileNamePath=spak"><MobileOutlined /> 安卓手机下载</a>
                         </div>
                     </div>
                     <div className="sino-icon-login"><img src={anniversary} alt="图标" /></div>
