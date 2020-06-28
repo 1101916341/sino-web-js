@@ -1,6 +1,6 @@
 import React from "react";
 import TagList from "./component/TagList";
-import "./index.less";
+import "./tagsView.less";
 
 const TagsView = () => {
     return (

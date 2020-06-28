@@ -1,63 +1,77 @@
-const menuList = [{
-    title: "首页",
-    path: "/dashboard",
+const menuList = [
+  {
+    title: '首页',
+    path: '/dashboard',
     roles: [],
-    icon: "HomeOutlined",
-    children: [{
-        path: "/dashboard/123",
-        title: "首页",
+    icon: 'HomeOutlined',
+    children: [
+      {
+        path: '/dashboard/123',
+        title: '首页',
         roles: [],
-        icon: "HomeOutlined"
-    }]
-},
-{
-    path: "/analysis",
-    title: "经营分析",
+        icon: 'HomeOutlined'
+      }
+    ]
+  },
+  {
+    path: '/analysis',
+    title: '经营分析',
     roles: [],
-    icon: "AreaChartOutlined",
+    icon: 'AreaChartOutlined',
     children: []
-},
-{
-    path: "/culture",
-    title: "企业文化",
+  },
+  {
+    path: '/culture',
+    title: '企业文化',
     roles: [],
-    icon: "BookOutlined",
+    icon: 'BookOutlined',
     children: []
-},
-{
-    path: "/business",
-    title: "业务管理",
+  },
+  {
+    path: '/business',
+    title: '业务管理',
     roles: [],
-    icon: "GoldOutlined",
+    icon: 'GoldOutlined',
     children: []
-},
-{
-    path: "/process",
-    title: "流程管理",
+  },
+  {
+    path: '/process',
+    title: '流程管理',
     roles: [],
-    icon: "ClusterOutlined",
+    icon: 'ClusterOutlined',
     children: []
-},
-{
-    path: "/credit",
-    title: "信用管理",
+  },
+  {
+    path: '/credit',
+    title: '信用管理',
     roles: [],
-    icon: "IdcardOutlined",
+    icon: 'IdcardOutlined',
     children: []
-},
-{
-    path: "/configuration",
-    title: "配置管理",
+  },
+  {
+    path: '/configuration',
+    title: '配置管理',
     roles: [],
-    icon: "SettingOutlined",
+    icon: 'SettingOutlined',
     children: []
-},
-{
-    path: "/system",
-    title: "系统管理",
+  },
+  {
+    path: '/system',
+    title: '系统管理',
     roles: [],
-    icon: "SettingOutlined",
+    icon: 'SettingOutlined',
     children: []
-}]
+  },
+  {
+    path: '/myUser',
+    title: '个人信息',
+    isShow: false
+  },
+  {
+    path: '/editPassowrd',
+    title: '修改密码',
+    isShow: false
+  }
+]
 
-export default menuList;
+export {menuList}
