@@ -44,16 +44,19 @@ const Login = (props) => {
           <div className='login-header'>
             <img src={logo} alt='中科金财' className='log-style' />
             <div className='sino-ul'>
-              <a href='http://www.sinodata.net.cn/'>
+              <a href='http://www.sinodata.net.cn/' target='_blank' rel='noopener noreferrer'>
                 <HomeOutlined /> 公司官网
               </a>
-              <a href='http://ehr.sinodata.net.cn'>
+              <a href='http://ehr.sinodata.net.cn' target='_blank' rel='noopener noreferrer'>
                 <UsergroupAddOutlined /> ERH员工系统
               </a>
-              <a href='http://e-learning.sinodata.net.cn'>
+              <a href='http://e-learning.sinodata.net.cn' target='_blank' rel='noopener noreferrer'>
                 <YoutubeOutlined /> E-learning员工学习系统
               </a>
-              <a href='http://172.169.100.126:8082/app/file/download/template?fileNamePath=spak'>
+              <a
+                href='http://172.169.100.126:8082/app/file/download/template?fileNamePath=spak'
+                target='_blank'
+                rel='noopener noreferrer'>
                 <MobileOutlined /> 安卓手机下载
               </a>
             </div>
