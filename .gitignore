@@ -18,6 +18,7 @@
 *.lock
 
 # misc
+/.prettierrc 
 .DS_Store
 .env.local
 .env.development.local
