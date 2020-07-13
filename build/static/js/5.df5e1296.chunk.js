@@ -1,0 +1,2 @@
+(this["webpackJsonpsino-web-js"]=this["webpackJsonpsino-web-js"]||[]).push([[5],{490:function(n,e,t){},498:function(n,e,t){"use strict";t.r(e);var s=t(0),u=t.n(s),i=t(28);t(490);e.default=Object(i.b)((function(n){return n.user}))((function(n){return u.a.createElement("div",null,"\u8fd9\u91cc\u662f\u7528\u6237\u4fe1\u606f")}))}}]);
+//# sourceMappingURL=5.df5e1296.chunk.js.map

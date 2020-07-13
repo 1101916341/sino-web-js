@@ -9,7 +9,6 @@
 /coverage
 
 # production
-/build
 
 # Editor directories and files
 .idea
