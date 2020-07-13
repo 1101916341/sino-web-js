@@ -1,0 +1,1 @@
+{"version":3,"sources":["views/dashboard/index.jsx"],"names":["Dashboard"],"mappings":"kHAAA,2BAUeA,UARG,WACd,OACI","file":"static/js/6.02412857.chunk.js","sourcesContent":["import React from 'react';\r\n\r\nconst Dashboard = () => {\r\n    return (\r\n        <div>\r\n            这里是首页信息\r\n        </div>\r\n    );\r\n}\r\n\r\nexport default Dashboard;\r\n"],"sourceRoot":""}
